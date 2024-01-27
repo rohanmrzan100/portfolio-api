@@ -13,7 +13,7 @@ let CLIENT_HOST: string = "http://localhost:3000";
 if (env.NODE_ENV === "production") {
   CLIENT_HOST = env.CLIENT_HOST;
 }
-console.log(CLIENT_HOST);
+console.log("CLIENT_HOST",CLIENT_HOST);
 
 app.use(
   cors({
