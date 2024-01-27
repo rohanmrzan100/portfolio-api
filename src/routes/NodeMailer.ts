@@ -1,16 +1,15 @@
 import env from "../envalid";
 import nodemailer from "nodemailer";
 import express, { Request, Response } from "express";
-import { log } from "console";
 
 const router = express.Router();
 
 router.post("/send", (req: Request, res: Response) => {
-  console.log("here");
-  
   const sender: string = req.body.name;
   const message: string = req.body.message;
   const email: string = req.body.email;
+
+  // console.log(sender, message, email);
 
   const transporter = nodemailer.createTransport({
     service: "gmail",

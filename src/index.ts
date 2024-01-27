@@ -15,7 +15,13 @@ if (env.NODE_ENV === "production") {
 }
 console.log("CLIENT_HOST", CLIENT_HOST);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: CLIENT_HOST,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // Enable credentials (e.g., cookies, authorization headers) for cross-origin requests
+  })
+);
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
