@@ -17,9 +17,10 @@ console.log("CLIENT_HOST", CLIENT_HOST);
 
 app.use(
   cors({
-    origin: CLIENT_HOST,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Enable credentials (e.g., cookies, authorization headers) for cross-origin requests
+    credentials: true,
+    preflightContinue: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: true,
   })
 );
 app.use(morgan("dev"));
