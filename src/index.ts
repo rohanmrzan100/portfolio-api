@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express, { Express, NextFunction, Request, Response } from "express";
 import MailRouter from "./routes/NodeMailer";
 import cors from "cors";
-
+import morgan from "morgan";
 dotenv.config();
 
 const app: Express = express();
@@ -13,15 +13,16 @@ let CLIENT_HOST: string = "http://localhost:3000";
 if (env.NODE_ENV === "production") {
   CLIENT_HOST = env.CLIENT_HOST;
 }
+console.log(CLIENT_HOST);
 
 app.use(
   cors({
-    origin: `${env.CLIENT_HOST}`,
+    origin: CLIENT_HOST,
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
   })
 );
-
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
