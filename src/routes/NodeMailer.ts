@@ -19,7 +19,7 @@ router.post("/send", (req: Request, res: Response) => {
 
   const mailOptions: nodemailer.SendMailOptions = {
     from: email,
-    to: process.env.EMAIL as string,
+    to: env.EMAIL as string,
     subject: "You have a message from " + sender,
     text: message + "\nSent By\n" + email,
   };
