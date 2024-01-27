@@ -29,7 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/mail", MailRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hello World !");
+  res.send(
+    `<h1>Hello World ! </h1>\n\n Client Host is <a href="${CLIENT_HOST}">${CLIENT_HOST}</a>`
+  );
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
